@@ -1,1 +1,10 @@
-<p>game works!</p>
+<main>
+    <div class="cards-stack">
+        <img *ngIf="playedCard" class="played-card" style="right: 25px" src="assets/img/cards/{{ playedcard }}.png" alt="">
+         <img *ngFor="let card of [1, 2, 3, 4, 5]; let i = index" [ngStyle]="{'right.px': i * 5}" src="assets/img/cards/card_cover.png" alt="">
+
+         <img (click)="pickCard()" class="top-card" [ngStyle]="{'right.px': 25}" src="assets/img/cards/card_cover.png" alt="">
+         <img (click)="pickCard()" *ngIf="pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ currentCard }}.png" alt="">
+         
+    </div>
+</main>
