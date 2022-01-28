@@ -1,0 +1,22 @@
+.player-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    img{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 100%;
+        border: 2px solid black;
+    }
+
+    span{
+        font-size: 20px;
+        margin-left: 20px;
+    }
+}
+
+.player-active{
+    width: 250px;
+    height: 100px;
+}
