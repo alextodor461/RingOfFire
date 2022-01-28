@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddPlayerComponent implements OnInit {
   Name: string = '';
-  
+ 
   constructor() { }
 
   ngOnInit(): void {

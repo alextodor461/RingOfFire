@@ -4,6 +4,7 @@ export class Game {
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 1;
+    public info: string[] = ['Infooooo', 'isdnisdnid'];
 
     constructor(){ 
         for(let i= 1; i < 14; i++){

@@ -11,7 +11,6 @@ import { AddPlayerComponent } from '../add-player/add-player.component';
 export class GameComponent implements OnInit {
   pickcard = false;
   playedCard = false;
-  Name: string = '';
   game = new Game(); //Neues Objekt erstellt
   currentCard: any | undefined = ''; 
   playedcard: any | undefined = ''; 
@@ -34,7 +33,6 @@ export class GameComponent implements OnInit {
       this.pickcard = true;
       this.playedCard = true;
       this.game.playedCards.push(this.currentCard);
-     
 
        setTimeout(()=>{
           this.pickcard = false; //nach 2.5 sec. wird die variable auf false gesetzt und die karte verschwindet 
