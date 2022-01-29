@@ -14,6 +14,7 @@ export class GameComponent implements OnInit {
   game = new Game(); //Neues Objekt erstellt
   currentCard: any | undefined = ''; 
   playedcard: any | undefined = ''; 
+  dialogRef: any;
 
   constructor(public dialog: MatDialog) {}
 
@@ -34,6 +35,12 @@ export class GameComponent implements OnInit {
       this.playedCard = true;
       this.game.playedCards.push(this.currentCard);
 
+      this.game.currentPlayer++;
+
+      if(this.game.currentPlayer == this.game.players.length){
+        this.game.currentPlayer = 0;
+      }
+
        setTimeout(()=>{
           this.pickcard = false; //nach 2.5 sec. wird die variable auf false gesetzt und die karte verschwindet 
           this.playedcard = this.game.playedCards.pop();
@@ -43,9 +50,11 @@ export class GameComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AddPlayerComponent);
-
+    
     dialogRef.afterClosed().subscribe(name => {
-      this.game.players.push(name);
+      if(name && name.length > 0){
+        this.game.players.push(name);
+      }   
     });
   }
 }

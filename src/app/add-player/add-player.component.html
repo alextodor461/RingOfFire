@@ -7,7 +7,7 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="Name" cdkFocusInitial>Add Player</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+  <button mat-button [disabled]="Name.length == 0" [mat-dialog-close]="Name" cdkFocusInitial>Add Player</button>
 </div>
 

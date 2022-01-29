@@ -3,11 +3,10 @@
 <main>
     <video autoplay muted loop src="assets/videos/game-background.mp4"></video>
     <div class="cards-stack">  
-         <img class="top-card" *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; let i = index" [class.anmation]="pickcard" [ngStyle]="{'right.px': i * 20}" (click)="pickCard()" src="assets/img/cards/card_cover.png" alt="">
+         <img class="top-card" *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; let i = index" [class.anmation]="pickcard"  [ngStyle]="{'right.px': i * 20, 'top.px': 5 - i * 5}" (click)="pickCard()" src="assets/img/cards/card_cover.svg" alt="">
+         <img class="played-card" style="right: 25px;" src="assets/img/cards/{{ playedcard }}.svg" alt="">
 
-         <img class="played-card" style="right: 25px;" src="assets/img/cards/{{ playedcard }}.png" alt="">
-
-         <img (click)="pickCard()" *ngIf="pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ currentCard }}.png" alt="">      
+         <img (click)="pickCard()" *ngIf="pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ currentCard }}.svg" alt="">      
     </div>  
     
     <div class="play-desk-div">
@@ -15,7 +14,7 @@
     </div>
 </main>
 
-<app-game-info [rule]="card" *ngFor="let card of game.info; let i = index" class="info"></app-game-info>
+<app-game-info *ngIf="playedCard" [rule]="currentCard" class="info"></app-game-info>
 
 <button mat-fab color="primary" class="btn-add" (click)="openDialog()">
     <mat-icon>add</mat-icon>

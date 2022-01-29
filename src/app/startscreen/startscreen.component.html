@@ -2,10 +2,12 @@
     <video autoplay muted loop src="/assets/videos/RingOfFire2.mp4"></video>
 
     <div class="start-element">
-        <img src="assets/img/cards/cover1.svg" alt="">
-        <button (click)="newGame()" >start</button>
-        <img class="cards-fire" src="assets/img/cards/startscreen-game-cards.svg" alt="">
-    </div>
+        <img class="game-title" src="assets/img/cards/cover1.svg" alt="">
 
-    <img class="flying-cards" src="assets/img/cards/startscreen-game-cards2.svg" alt="">
+        <div class="cards-bottom-div">
+            <img class="cards-fire card-stack1" src="assets/img/cards/startscreen-cards.svg" alt="">
+            <img (click)="newGame()" class="start" src="assets/img/cards/start-btn.svg" alt="">
+            <img class="cards-fire card-stack2" src="assets/img/cards/startscreen-cards.svg" alt="">
+        </div>  
+    </div>
 </main>
