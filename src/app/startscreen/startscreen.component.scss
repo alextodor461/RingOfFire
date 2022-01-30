@@ -66,11 +66,16 @@ main{
         }
 
         .start{
-            width: 15%;
+            width: 10%;
+            margin-bottom: -20%;
             cursor: pointer;
+            transition: 500ms ease;
+            transform: rotate(20deg);
 
             &:hover{
                 filter: brightness(130%);
+                transform: rotate(0);
+                margin-bottom: 0px;
             }
         }
     }

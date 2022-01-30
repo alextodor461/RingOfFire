@@ -6,7 +6,7 @@ import { Component, Input, OnChanges, OnInit } from '@angular/core';
   styleUrls: ['./game-info.component.scss']
 })
 export class GameInfoComponent implements OnInit, OnChanges {
-  
+ 
   @Input() rule: any;
   title = '';
   description = '';

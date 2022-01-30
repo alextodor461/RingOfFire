@@ -20,7 +20,6 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.newGame();
-    console.log(this.game);
   }
 
   newGame(){
@@ -28,7 +27,9 @@ export class GameComponent implements OnInit {
   }
 
   pickCard(){
-    if(!this.pickcard){ //wenn die variable false ist kann man drauf drücken
+    if(this.game.players.length == 0){
+      alert('add player');
+    }else if(!this.pickcard){ //wenn die variable false ist kann man drauf drücken
       this.currentCard = this.game?.stack.pop();
       console.log(this.currentCard);
       this.pickcard = true;

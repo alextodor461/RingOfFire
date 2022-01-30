@@ -9,19 +9,10 @@ import { Router } from '@angular/router';
 export class StartscreenComponent implements OnInit {
   
   constructor(private router: Router) { }
-  audio = new Audio();
   ngOnInit(): void {
-    this.playAudio();
   }
 
   newGame(){
     this.router.navigateByUrl('/game');
-    this.audio.pause();
-  }
-
-  playAudio(){
-    this.audio.src = "assets/audios/Hard Rock full 120.mp3";
-    this.audio.load();
-    this.audio.play();
   }
 }
