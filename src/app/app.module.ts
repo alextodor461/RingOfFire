@@ -14,6 +14,9 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import { FormsModule } from '@angular/forms';
 import { GameInfoComponent } from './game-info/game-info.component';
 import { MatCardModule } from '@angular/material/card';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
+import { AlertComponent } from './alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +25,11 @@ import { MatCardModule } from '@angular/material/card';
     GameComponent,
     PlayerComponent,
     AddPlayerComponent,
-    GameInfoComponent
+    GameInfoComponent,
+    AlertComponent
   ],
   imports: [
+    AngularFireModule.initializeApp(environment.firebase),
     BrowserModule,
     AppRoutingModule,
     MatButtonModule,

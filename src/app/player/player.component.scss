@@ -2,20 +2,31 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    img{
-        width: 60px;
-        height: 60px;
+    width: 100%;
+    position: relative;
+    filter: brightness(90%);
+
+    .user-img{
+        width: 40px;
         object-fit: cover;
-        border-radius: 100%;
-        border: 2px solid white;
     }
 
     span{
-        font-size: 20px;
-        margin-left: 20px;
+        font-size: 15px;
+        margin-left: 5px;
+    }
+
+    .player-board{
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 180px;
+        z-index: -1;
     }
 }
- 
+
 .player-active{
-   color: orange;
+    text-decoration: underline;
+    color: black;
+    filter: brightness(110%);
 }

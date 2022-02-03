@@ -1,10 +1,15 @@
+import { REFERENCE_PREFIX } from "@angular/compiler/src/render3/view/util";
 
 export class Game {
     public players: string[] = [];
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
-
+    public pickcard = false;
+    public playedCard = false;
+    public currentCard: any = ''; 
+    public playedcard: any = ''; 
+   
     constructor(){ 
         for(let i= 1; i < 14; i++){
             this.stack.push('ace_' + i);
@@ -14,8 +19,20 @@ export class Game {
         }
         shuffle(this.stack);
     }
-}
 
+    public gameToJSON(){
+        return{
+            players: this.players,
+            stack: this.stack,
+            playedCards: this.playedCards,
+            currentPlayer: this.currentPlayer,
+            pickcard: this.pickcard,
+            playedCard: this.playedCard,
+            currentCard: this.currentCard,
+            playedcard: this.playedcard
+        };
+    }
+}
 
 //funkction zum Mischen der Karten
 function shuffle(array: any[]) {

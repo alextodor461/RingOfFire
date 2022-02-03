@@ -1,13 +1,10 @@
 <main>
-    <video muted autoplay loop src="assets/videos/ringoffire.mp4"></video>
+    <img class="bg" src="assets/img/cards/startscreen.png" alt="">
 
-    <div class="start-element">
-        <img class="game-title" src="assets/img/cards/game-title.svg" alt="">
-
-        <div class="cards-bottom-div">
-            <img class="cards-fire card-stack1" src="assets/img/cards/startscreen-cards.svg" alt="">     
-                <img (click)="newGame()" class="start" src="assets/img/cards/diamonds_1_start.svg" alt="">              
-            <img class="cards-fire card-stack2" src="assets/img/cards/startscreen-cards.svg" alt="">
-        </div>  
+    <div class="start-element"> 
+        <div class="start-game-div">
+            <img class="start-board" src="assets/img/cards/start-board.svg" alt="">
+            <img class="start-btn" (click)="newGame()" src="assets/img/cards/start-game.svg" alt="">
+        </div>
     </div>
 </main>
