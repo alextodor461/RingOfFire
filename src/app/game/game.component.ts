@@ -36,6 +36,7 @@ export class GameComponent implements OnInit {
         this.game.currentCard = game.currentCard;
       })
     });
+    
   }
 
   newGame(){
@@ -47,14 +48,12 @@ pickCard(){
       this.alert = true;
     }else if(!this.game.pickcard){ //wenn die variable false ist kann man drauf drücken
       this.game.currentCard = this.game?.stack.pop();
-     
       console.log(this.game.currentCard);
       this.game.pickcard = true;
       this.game.playedCard = true;
       this.game.playedCards.push(this.game.currentCard);
-      
-      this.game.currentPlayer++;
       this.saveGame();
+      this.game.currentPlayer++;
       if(this.game.currentPlayer == this.game.players.length){
         this.game.currentPlayer = 0;
       }
@@ -64,6 +63,7 @@ pickCard(){
           this.game.pickcard = false; //nach 2.5 sec. wird die variable auf false gesetzt und die karte verschwindet
           this.saveGame(); 
       },1250) //erst nach 2.5 sec. kann man wieder drauf drücken
+      
     }      
   }
 
