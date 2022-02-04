@@ -1,6 +1,6 @@
 
 <div class="div">
-    <app-player [name]="player" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + (i * 175)}" class="player-position" [playerActive]="i == game.currentPlayer"></app-player>
+    <app-player (click)="selectCharacter(i)" [name]="player" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + (i * 175)}" class="player-position" [image]="game.character[i]" [playerActive]="i == game.currentPlayer"></app-player>
 </div>
 <app-alert *ngIf="alert" class="app-alert"></app-alert>
 
@@ -8,12 +8,12 @@
     <div class="floor-div">
         <img class="floor-img" src="assets/img/cards/game-bg.png" alt="">
     </div>
-    
+   
     <img class="game-desk" src="assets/img/cards/game-desk2.svg" alt="">
     <div class="cards-stack">  
-         <img *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; let i = index" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'right.px': i * 25}" (click)="pickCard()" src="assets/img/cards/card_cover.svg" alt="">
-         <img class="played-card" style="right: 25px;" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
-         <img (click)="pickCard()" *ngIf="this.game.pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt="">      
+        <img *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; let i = index" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'right.px': i * 25}" (click)="pickCard()" src="assets/img/cards/card_cover.svg" alt="">
+        <img class="played-card" style="right: 25px;" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
+        <img (click)="pickCard()" *ngIf="this.game.pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt="">           
     </div>  
 </main>
 

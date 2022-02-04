@@ -5,6 +5,14 @@
     <mat-label>name</mat-label>
     <input matInput [(ngModel)]="Name">
   </mat-form-field>
+
+  <div>
+    <p>Wähle deinen Charakter aus</p>
+
+    <div class="character-div">
+      <img [mat-dialog-close]="character" *ngFor="let character of allCharacters" src="{{ character }}" >
+    </div>
+  </div>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>

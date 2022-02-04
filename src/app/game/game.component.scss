@@ -51,8 +51,8 @@ main{
     transform: rotateX(45deg);
 
     &:hover{
-        transform: translateY(-10px);
-    } 
+        transform: translateY(-20px) rotateX(45deg);
+    }
 }
 
 .played-card{

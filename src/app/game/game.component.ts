@@ -11,9 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  
   alert = false;
-  gameId!: string;
+  gameId: any;
   game = new Game(); //Neues Objekt erstellt
   dialogRef: any;
 
@@ -22,28 +21,28 @@ export class GameComponent implements OnInit {
   ngOnInit(): void {
     this.newGame();
     this.route.params.subscribe((params) =>{
-     
-      this.firestore.collection('games').doc(params['id']).valueChanges().subscribe((game: any) => {
-        this.gameId = params['id'];
+      this.gameId = params['id'];
+      this.firestore.collection('games').doc(this.gameId).valueChanges().subscribe((game: any) => {
+        
         console.log('game update', game);
-        this.game.currentPlayer = game.currentPlayer;
-        this.game.playedCards = game.playedCards;
         this.game.players = game.players;
         this.game.stack = game.stack;
+        this.game.character = game.character;
+        this.game.playedCards = game.playedCards;
+        this.game.currentPlayer = game.currentPlayer;
         this.game.pickcard = game.pickcard;
         this.game.playedCard = game.playedCard;
-        this.game.pickcard = game.playedcard;
         this.game.currentCard = game.currentCard;
+        this.game.playedcard = game.playedcard;
       })
     });
-    
   }
 
   newGame(){
     this.game; 
   }
 
-pickCard(){
+  pickCard(){
     if(this.game.players.length == 0){
       this.alert = true;
     }else if(!this.game.pickcard){ //wenn die variable false ist kann man drauf drücken
@@ -52,19 +51,25 @@ pickCard(){
       this.game.pickcard = true;
       this.game.playedCard = true;
       this.game.playedCards.push(this.game.currentCard);
-      this.saveGame();
       this.game.currentPlayer++;
       if(this.game.currentPlayer == this.game.players.length){
         this.game.currentPlayer = 0;
       }
-
+      this.saveGame();
+      
        setTimeout(()=>{ 
           this.game.playedcard = this.game.playedCards.pop();   
           this.game.pickcard = false; //nach 2.5 sec. wird die variable auf false gesetzt und die karte verschwindet
           this.saveGame(); 
       },1250) //erst nach 2.5 sec. kann man wieder drauf drücken
-      
     }      
+  }
+
+  selectCharacter(characterId: number){
+    this.dialogRef.afterClosed().subscribe((change: string) => {
+      this.game.character[characterId] = change;
+    
+    });
   }
 
   openDialog(): void {
