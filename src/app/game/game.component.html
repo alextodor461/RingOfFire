@@ -1,6 +1,6 @@
 
 <div class="div">
-    <app-player (click)="selectCharacter(i)" [name]="player" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + (i * 175)}" class="player-position" [image]="game.character[i]" [playerActive]="i == game.currentPlayer"></app-player>
+    <app-player [Name]="player" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + (i * 175)}" class="player-position" [image]="game.character[i]" [playerActive]="i == game.currentPlayer"></app-player>
 </div>
 <app-alert *ngIf="alert" class="app-alert"></app-alert>
 

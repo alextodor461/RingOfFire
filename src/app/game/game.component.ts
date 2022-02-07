@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Game } from 'src/models/game';
 import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerComponent } from '../add-player/add-player.component';
@@ -15,7 +15,7 @@ export class GameComponent implements OnInit {
   gameId: any;
   game = new Game(); //Neues Objekt erstellt
   dialogRef: any;
-
+  
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -24,7 +24,7 @@ export class GameComponent implements OnInit {
       this.gameId = params['id'];
       this.firestore.collection('games').doc(this.gameId).valueChanges().subscribe((game: any) => {
         
-        console.log('game update', game);
+        console.log('game update', this.game);
         this.game.players = game.players;
         this.game.stack = game.stack;
         this.game.character = game.character;
@@ -65,22 +65,22 @@ export class GameComponent implements OnInit {
     }      
   }
 
-  selectCharacter(characterId: number){
-    this.dialogRef.afterClosed().subscribe((change: string) => {
-      this.game.character[characterId] = change;
-    
-    });
-  }
-
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddPlayerComponent);
-    
-    dialogRef.afterClosed().subscribe(name => {
-      if(name && name.length > 0){
-        this.game.players.push(name);
-        this.alert = false;
-        this.saveGame();
-      }   
+    const dialogRef = this.dialog.open(AddPlayerComponent, {
+      data: {
+        game: this.game,
+        character: this.character,        
+        name: this.name
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('dialog was closed', result);
+      if (result != undefined) {
+        this.name = result[0];
+        this.character = result[1];
+      }
+      
     });
   }
 
