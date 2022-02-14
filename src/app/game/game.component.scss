@@ -19,7 +19,6 @@ main{
        left: 0;
        bottom: 0;
       
-
         .floor-img{
             z-index: -1;
             object-fit: cover;
@@ -28,68 +27,91 @@ main{
         }
    }
 
-        .cards-stack{
-            position: relative;
-            z-index: 1;
-            width: 50%;
-            height: 100%;
-            margin-right: 40%;
-            perspective: 1000px;
-
-        img{
-            position: absolute;
-            bottom: 30%;
-            width: 12.5%;
-            transition: 225ms ease;
-            filter: brightness(120%);
-        } 
+    .cards-stack{
+        position: relative;
+        z-index: 1;
+        width: 40%;
+        margin-bottom: 6rem !important;
+        margin: auto;
+        height: 50vh;
+        perspective: 2500px;
     }
 }
 
-.top-card{
-    cursor: pointer;
+.allcards-div{
+    position: absolute;
+    width: 60%;
+    bottom: 30rem !important;
+    left: 7.5rem;
     transform: rotateX(45deg);
+}
 
+.top-card{
+    position: absolute;  
+    width: 17.5%; 
+    transition: 225ms ease;
+    filter: brightness(120%);
+    cursor: pointer;
+    padding-bottom: 75px;
+    transform-origin: bottom;
+    
     &:hover{
-        transform: translateY(-20px) rotateX(45deg);
+        filter: brightness(150%);
     }
 }
 
 .played-card{
-    transform: scale(1.0) translateY(-50px) translateX(250px) rotateX(45deg) rotateY(-10deg) rotateZ(150deg);
+    transform: translateY(5rem) translateX(20rem) rotateZ(30deg);
     filter: brightness(130%);
-    width: 12.5% !important;
+    width: 17.5%;
+    position: absolute;
 }
 
 .pick-card{
+    position: absolute;
     animation: pick-card-animation 1.25s ease-in-out;
-    transform: scale(1.0) translateY(-50px) translateX(250px) rotateX(45deg) rotateY(-10deg) rotateZ(150deg);
     filter: brightness(130%);
+    width: 17.5%;
+    transform: rotateX(0deg) !important;
+}
+
+.player-board-div{
+    z-index: 1;
+    position: absolute;
+    width: 20%;
+    right: 15%;
+    bottom: 70%;
+
+    .player-board{
+        position: relative;
+        width: 100%;
+        filter: brightness(90%);
+    }
 }
 
 @keyframes pick-card-animation{
     0%{
-        transform: scale(1);
+        transform: scale(1) rotateX(0deg) !important;
     }
     40%{
-        transform: scale(1.7);
+        transform: scale(1.4) rotateX(0deg);
     }
     80%{
-        transform: scale(1.7);
+        transform: scale(1.4) rotateX(0deg);
     }
     100%{
-        transform: scale(1.0) translateY(-50px) translateX(250px) rotateX(45deg) rotateY(-10deg) rotateZ(150deg);
+        transform: scale(1) translateY(5rem) translateX(20rem) rotateZ(30deg);
     }
 }
 
 .player-position{
     display: flex;
     justify-content: center;
+    align-items: center;
     width: 200px;
-    height: 80px;
+    margin: 5px 0px;
     z-index: 1;
     color: white;
-    margin: 10px;
 }
 
 .btn-add{
@@ -110,6 +132,7 @@ main{
     bottom: 50px;
     right: 200px;
     left: 200px;
+    perspective: 1000px;
 }
 
 .new-start-btn{
@@ -121,11 +144,18 @@ main{
 .div{
     display: flex !important;
     justify-content: center;
-    width: 500px;
+    width: 100%;
+    min-height: 60%;
+    max-height: 60%;
     position: absolute;
-    top: 0;
+    top: 22.5%;
     right: 0;
     flex-wrap: wrap;
+    overflow: scroll;
+}
+
+.div::-webkit-scrollbar {
+    display: none;
 }
 
 .app-alert{
@@ -136,3 +166,276 @@ main{
     left: 0;
     z-index: 2;
 }
+
+.game-over-overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.beer{
+    position: absolute;
+    bottom: 30rem;
+    left: 17.5rem;
+    width: 5.5%;
+    z-index: 20;
+    cursor: pointer;
+    transition: 175ms ease;
+    
+    &:hover{
+        filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
+    }
+}
+
+.beer-bottle{
+    position: absolute;
+    bottom: 30rem;
+    left: 12.5rem;
+    width: 3%;
+    z-index: 20;
+    cursor: pointer;
+    transition: 175ms ease;
+    
+    &:hover{
+        filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
+    }
+}
+
+.highlightBeer{
+    filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
+}
+
+@media all and (max-width: 1800px){
+    .allcards-div{
+        bottom: 26rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+}
+
+@media all and (max-width: 1680px){
+    .allcards-div{
+        bottom: 25rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 27.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 27.5rem !important;
+    }
+}
+
+@media all and (max-width: 1600px){
+    .allcards-div{
+        bottom: 23rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 25rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 25rem !important;
+    }
+}
+
+@media all and (max-width: 1470px){
+    .allcards-div{
+        bottom: 20rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 55px !important;
+    }
+
+    .beer{
+        bottom: 23.5rem !important;
+        left: 15rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 23.5rem !important;
+        left: 10rem !important;
+    }
+}
+
+@media all and (max-width: 1360px){
+    .allcards-div{
+        bottom: 19rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 55px !important;
+    }
+
+    .btn-add{
+        width: 60px;
+    }
+
+    .beer{
+        bottom: 22.5rem !important;
+        left: 15rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 22.5rem !important;
+        left: 10rem !important;
+    }
+}
+
+@media all and (max-width: 1300px){
+    .allcards-div{
+        bottom: 17.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 45px !important;
+    }
+
+    .beer{
+        bottom: 21.5rem !important;
+        left: 15rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 21.5rem !important;
+        left: 10rem !important;
+    }
+}
+
+@media all and (max-width: 1215px){
+    .allcards-div{
+        bottom: 15.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 40px !important;
+    }
+
+    .beer{
+        bottom: 19.5rem !important;
+        left: 13rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 19.5rem !important;
+        left: 8rem !important;
+    }
+}
+
+@media all and (max-width: 1115px){
+    .allcards-div{
+        bottom: 14rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 40px !important;
+    }
+
+    .beer{
+        bottom: 18.5rem !important;
+        left: 13rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 18.5rem !important;
+        left: 8rem !important;
+    }
+}
+
+@media all and (max-width: 1035px){
+    .allcards-div{
+        bottom: 13rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 35px !important;
+    }
+
+    .beer{
+        bottom: 17.5rem !important;
+        left: 10rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 17.5rem !important;
+        left: 6rem !important;
+    }
+}
+
+@media all and (max-width: 985px){
+    .allcards-div{
+        bottom: 11.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 35px !important;
+    }
+
+    .beer{
+        bottom: 16.5rem !important;
+        left: 10rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 16.5rem !important;
+        left: 6rem !important;
+    }
+}
+
+@media all and (max-width: 905px){
+    .allcards-div{
+        bottom: 10rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 35px !important;
+    }
+
+    .beer{
+        bottom: 14.5rem !important;
+        left: 10rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 14.5rem !important;
+        left: 6rem !important;
+    }
+}
+
+@media all and (max-width: 850px){
+    .allcards-div{
+       left: 2.5rem !important;
+    }
+}
+
+
+/* HEIGHT SECTION */
+
+

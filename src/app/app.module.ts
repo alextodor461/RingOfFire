@@ -19,6 +19,9 @@ import { environment } from '../environments/environment';
 import { AlertComponent } from './alert/alert.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
+import { DetelePlayerComponent } from './detele-player/detele-player.component';
+import { GameOverComponent } from './game-over/game-over.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +30,9 @@ import {MatSelectModule} from '@angular/material/select';
     PlayerComponent,
     AddPlayerComponent,
     GameInfoComponent,
-    AlertComponent
+    AlertComponent,
+    DetelePlayerComponent,
+    GameOverComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

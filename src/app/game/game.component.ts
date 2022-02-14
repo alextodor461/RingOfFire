@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddPlayerComponent } from '../add-player/add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { DetelePlayerComponent } from '../detele-player/detele-player.component';
+import { GameOverComponent } from '../game-over/game-over.component';
 
 @Component({
   selector: 'app-game',
@@ -11,11 +13,13 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  alert = false;
+  gameover = new GameOverComponent();
+  drinkBeer = new Audio();
+  audio2 = new Audio();
+  openBottle = new Audio();
   gameId: any;
   game = new Game(); //Neues Objekt erstellt
   dialogRef: any;
-  
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore, public dialog: MatDialog) {}
 
   ngOnInit(): void {
@@ -34,6 +38,12 @@ export class GameComponent implements OnInit {
         this.game.playedCard = game.playedCard;
         this.game.currentCard = game.currentCard;
         this.game.playedcard = game.playedcard;
+        this.game.gameOver = game.gameOver;
+        this.game.alert = game.alert;
+        this.game.beerFull = game.beerFull;
+        this.game.beerEmpty = game.beerEmpty;
+        this.game.drinkActive = game.drinkActive;
+        this.game.beerMug = game.beerMug;
       })
     });
   }
@@ -42,49 +52,87 @@ export class GameComponent implements OnInit {
     this.game; 
   }
 
-  pickCard(){
+  pickCard(cardId: number){
     if(this.game.players.length == 0){
-      this.alert = true;
-    }else if(!this.game.pickcard){ //wenn die variable false ist kann man drauf drücken
-      this.game.currentCard = this.game?.stack.pop();
-      console.log(this.game.currentCard);
+      this.game.alert = true;
+    }else{ //wenn die variable false ist kann man drauf drücken
+      this.game.currentCard = this.game.stack.pop();  
+      this.game.drinkActive = true;
       this.game.pickcard = true;
       this.game.playedCard = true;
       this.game.playedCards.push(this.game.currentCard);
       this.game.currentPlayer++;
+      console.log(this.game.stack);
+      //this.game.stack.splice(cardId, 0.5);
       if(this.game.currentPlayer == this.game.players.length){
         this.game.currentPlayer = 0;
       }
+
       this.saveGame();
       
+      setTimeout(()=>{
+        this.game.drinkActive = false;
+      }, 1000)
+
        setTimeout(()=>{ 
           this.game.playedcard = this.game.playedCards.pop();   
           this.game.pickcard = false; //nach 2.5 sec. wird die variable auf false gesetzt und die karte verschwindet
           this.saveGame(); 
       },1250) //erst nach 2.5 sec. kann man wieder drauf drücken
+
+      setTimeout(() =>{
+        if(this.game.stack.length == 0){
+          this.game.gameOver = true;
+          //this.audio2.src = "assets/audios/Wild West Story.wav";
+          //this.audio2.play();
+        }
+      }, 2000)
     }      
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddPlayerComponent, {
-      data: {
-        game: this.game,
-        character: this.character,        
-        name: this.name
-      }
-    });
+    const dialogRef = this.dialog.open(AddPlayerComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('dialog was closed', result);
-      if (result != undefined) {
-        this.name = result[0];
-        this.character = result[1];
+        dialogRef.afterClosed().subscribe(newPlayer => {
+          if(newPlayer){
+            this.game.players.push(newPlayer);
+            this.game.alert = false;
+            this.saveGame();
+          }   
+        });
       }
-      
-    });
+
+      deletePlayer(playerId: number): void {
+        const dialogRef = this.dialog.open(DetelePlayerComponent);
+    
+            dialogRef.afterClosed().subscribe(change => {  
+                if(change == 'DELETE'){
+                  this.game.players.splice(playerId, 1);
+                }     
+              this.saveGame();   
+            });
+          }
+
+  saveGame(){
+    this.firestore.collection('games').doc(this.gameId).update(this.game.gameToJSON());
   }
 
-saveGame(){
-   this.firestore.collection('games').doc(this.gameId).update(this.game.gameToJSON());
+  drink(){
+    this.game.beerFull = false;
+    this.game.beerEmpty = true;
+    this.game.beerMug = true;
+
+    setTimeout(() =>{
+      this.game.beerMug = false;
+    },750)
+    this.drinkBeer.src = "assets/audios/drink.mp3";
+    this.drinkBeer.play();
+  }
+
+  fillBeer(){
+    this.openBottle.src = "/assets/audios/open-bottle.mp3";
+    this.openBottle.play();
+    this.game.beerFull = true;
+    this.game.beerEmpty = false;
   }
 }

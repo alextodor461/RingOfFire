@@ -2,12 +2,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 80%;
+    min-height: 30%;
     position: relative;
+    background: none;
+    border: 1px solid white;
     filter: brightness(90%);
+    border-radius: 2px;
+    cursor: pointer;
+
+    &:hover{
+        background: white;
+        color: black;
+    }
 
     .user-img{
-        width: 40px;
+        width: 25px;
+        height: 25px;
+        border-radius: 100%;
         object-fit: cover;
     }
 
@@ -15,18 +27,9 @@
         font-size: 15px;
         margin-left: 5px;
     }
-
-    .player-board{
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 180px;
-        z-index: -1;
-    }
 }
 
 .player-active{
-    text-decoration: underline;
+    background: white;
     color: black;
-    filter: brightness(110%);
 }

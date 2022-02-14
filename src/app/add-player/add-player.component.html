@@ -1,27 +1,29 @@
-<h1 mat-dialog-title>Add New Player</h1>
-<div mat-dialog-content>
+<div class="mat-dialog">
+  <h1 mat-dialog-title>Add New Player</h1>
+<div class="mat-dialog-inner" mat-dialog-content>
   <p>What's your name</p>
   <mat-form-field>
     <mat-label>name</mat-label>
-    <input matInput [(ngModel)]="Name">
-    <div>
- 
-      <p>Please choose your Character</p>
-  <mat-select [(ngModel)]="character">
-    <ng-container *ngFor="let c of allCharacters; let i = index">
-      <mat-option value="{{ c }}">
-        <div class="select-img">
-          <img src="{{ c }}">
-        </div>
-      </mat-option>
-    </ng-container>
-  </mat-select>
-
-    </div>
+    <input maxlength="10" matInput [(ngModel)]="newPlayer.name">
   </mat-form-field>
+
+  <p>Please choose your Character</p>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select your Character</mat-label>
+        <mat-select [(ngModel)]="newPlayer.img">
+          <mat-option class="option" *ngFor="let img of characters" [value]="img">
+            <div class="character-div">
+              <img class="character-img" [src]="img">
+            </div>       
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Close</button>
-  <button mat-button [disabled]="Name.length == 0" [mat-dialog-close]="Name" cdkFocusInitial>Add Player</button>
+  <button mat-button [disabled]="newPlayer.name.length == 0 || newPlayer.img.length == 0" [mat-dialog-close]="newPlayer" cdkFocusInitial>Add Player</button>
 </div>
+</div>
+
 

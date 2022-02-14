@@ -1,23 +1,35 @@
 
-<div class="div">
-    <app-player [Name]="player" *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 50 + (i * 175)}" class="player-position" [image]="game.character[i]" [playerActive]="i == game.currentPlayer"></app-player>
+<app-alert *ngIf="game.alert" class="app-alert"></app-alert>
+
+<div class="player-board-div">
+    <img class="player-board" src="assets/img/cards/player-board.svg" alt="">
+
+    <div class="div">
+        <app-player *ngFor="let player of game.players; let i = index" (click)="deletePlayer(i)" [ngStyle]="{'top.px': 50 + (i * 175)}" [Img]="player.img" [Name]="player.name" class="player-position" [playerActive]="i == game.currentPlayer"></app-player>
+    </div>
 </div>
-<app-alert *ngIf="alert" class="app-alert"></app-alert>
 
 <main>
     <div class="floor-div">
         <img class="floor-img" src="assets/img/cards/game-bg.png" alt="">
     </div>
-   
-    <img class="game-desk" src="assets/img/cards/game-desk2.svg" alt="">
-    <div class="cards-stack">  
-        <img *ngFor="let card of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]; let i = index" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'right.px': i * 25}" (click)="pickCard()" src="assets/img/cards/card_cover.svg" alt="">
-        <img class="played-card" style="right: 25px;" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
-        <img (click)="pickCard()" *ngIf="this.game.pickcard" class="pick-card" style="right: 25px" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt="">           
+
+    <img class="game-desk" src="assets/img/cards/game-desk.svg" alt="">
+    <img *ngIf="game.beerFull" [class.highlightBeer]="game.drinkActive" class="beer" (click)="drink()" src="assets/img/cards/beer-full.svg" alt="">
+    <img *ngIf="game.beerEmpty" [class.highlightBeer]="game.drinkActive" class="beer" src="assets/img/cards/beer-empty.svg" alt="">
+    <img (click)="fillBeer()" [class.highlightBeer]="game.beerMug" class="beer-bottle" src="assets/img/cards/beer-bottle.svg" alt="">
+    <div class="cards-stack">
+        <div class="allcards-div">
+            <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.svg" alt="">
+            <img class="played-card" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
+            <img *ngIf="this.game.pickcard" class="pick-card" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt=""> 
+        </div>                  
     </div>  
 </main>
 
 <app-game-info *ngIf="this.game.playedCard" [rule]="this.game.currentCard" class="info"></app-game-info>
+
+<app-game-over *ngIf="game.gameOver" class="game-over-overlay"></app-game-over>
 
 <img class="btn-add" (click)="openDialog()" src="assets/img/cards/add-user.svg" alt="">
 

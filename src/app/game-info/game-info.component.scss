@@ -1,3 +1,21 @@
 .card{
     height: 100px;
 }
+
+@media all and (max-width: 1415px){
+    .card{
+        height: 65px;
+        font-size: 3px;
+    }
+}
+
+@media all and (max-width: 1150px){
+    .card{
+        height: 55px;
+        margin-bottom: -25px;
+
+        .title{
+            font-size: 20px;
+        }
+    }
+}
