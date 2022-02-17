@@ -5,7 +5,6 @@ import { AddPlayerComponent } from '../add-player/add-player.component';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { DetelePlayerComponent } from '../detele-player/detele-player.component';
-import { GameOverComponent } from '../game-over/game-over.component';
 
 @Component({
   selector: 'app-game',
@@ -13,7 +12,8 @@ import { GameOverComponent } from '../game-over/game-over.component';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  gameover = new GameOverComponent();
+  @Input() Img: string = '';
+  highlightAddPlayer = false;
   drinkBeer = new Audio();
   audio2 = new Audio();
   openBottle = new Audio();
@@ -49,25 +49,27 @@ export class GameComponent implements OnInit {
   }
 
   newGame(){
-    this.game; 
+    this.game = new Game(); 
+    this.saveGame();
   }
 
   pickCard(cardId: number){
     if(this.game.players.length == 0){
       this.game.alert = true;
+      this.highlightAddPlayer = true;
     }else{ //wenn die variable false ist kann man drauf drücken
       this.game.currentCard = this.game.stack.pop();  
       this.game.drinkActive = true;
       this.game.pickcard = true;
       this.game.playedCard = true;
+      this.highlightAddPlayer = false;
       this.game.playedCards.push(this.game.currentCard);
       this.game.currentPlayer++;
       console.log(this.game.stack);
-      //this.game.stack.splice(cardId, 0.5);
+      
       if(this.game.currentPlayer == this.game.players.length){
         this.game.currentPlayer = 0;
       }
-
       this.saveGame();
       
       setTimeout(()=>{
@@ -83,8 +85,8 @@ export class GameComponent implements OnInit {
       setTimeout(() =>{
         if(this.game.stack.length == 0){
           this.game.gameOver = true;
-          //this.audio2.src = "assets/audios/Wild West Story.wav";
-          //this.audio2.play();
+          this.audio2.src = "assets/audios/Wild West Story.wav";
+          this.audio2.play();
         }
       }, 2000)
     }      
@@ -102,16 +104,16 @@ export class GameComponent implements OnInit {
         });
       }
 
-      deletePlayer(playerId: number): void {
-        const dialogRef = this.dialog.open(DetelePlayerComponent);
+  deletePlayer(playerId: number): void {
+    const dialogRef = this.dialog.open(DetelePlayerComponent);
     
-            dialogRef.afterClosed().subscribe(change => {  
-                if(change == 'DELETE'){
-                  this.game.players.splice(playerId, 1);
-                }     
-              this.saveGame();   
-            });
-          }
+      dialogRef.afterClosed().subscribe(change => {  
+        if(change == 'DELETE'){
+          this.game.players.splice(playerId, 1);
+          this.saveGame(); 
+        }         
+      });
+  }
 
   saveGame(){
     this.firestore.collection('games').doc(this.gameId).update(this.game.gameToJSON());
@@ -127,6 +129,7 @@ export class GameComponent implements OnInit {
     },750)
     this.drinkBeer.src = "assets/audios/drink.mp3";
     this.drinkBeer.play();
+    this.saveGame();
   }
 
   fillBeer(){
@@ -134,5 +137,10 @@ export class GameComponent implements OnInit {
     this.openBottle.play();
     this.game.beerFull = true;
     this.game.beerEmpty = false;
+    this.saveGame();
   }
 }
+function currentDrink(currentDrink: any) {
+  throw new Error('Function not implemented.');
+}
+

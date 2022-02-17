@@ -116,15 +116,21 @@ main{
 
 .btn-add{
     position: absolute;
-    right: 32px;
-    bottom: 32px;
-    width: 75px;
+    right: 10rem;
+    bottom: 20rem;
+    width: 12.5%;
     cursor: pointer;
     z-index: 3;
-
+    filter: brightness(90%);
+    filter: drop-shadow(2px 2px 5px rgba(20, 20, 20, 0.493));
+    
     &:hover{
-        filter: brightness(120%);
+        filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
     }
+}
+
+.highlight{
+    filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
 }
 
 .info{
@@ -133,12 +139,6 @@ main{
     right: 200px;
     left: 200px;
     perspective: 1000px;
-}
-
-.new-start-btn{
-    position: absolute;
-    top: 20px;
-    left: 20px;
 }
 
 .div{
@@ -206,6 +206,20 @@ main{
 
 .highlightBeer{
     filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
+}
+
+.new-game{
+    position: absolute;
+    background: none;
+    border: none;
+    left: 8.5rem;
+    bottom: 19rem;
+    cursor: pointer;
+    width: 6%;
+
+    &:hover{
+        filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
+    }
 }
 
 @media all and (max-width: 1800px){
@@ -276,6 +290,10 @@ main{
         bottom: 23.5rem !important;
         left: 10rem !important;
     }
+
+    .new-game{
+        bottom: 17rem !important;
+    }
 }
 
 @media all and (max-width: 1360px){
@@ -289,7 +307,7 @@ main{
     }
 
     .btn-add{
-        width: 60px;
+        bottom: 15rem !important;
     }
 
     .beer{
@@ -322,11 +340,16 @@ main{
         bottom: 21.5rem !important;
         left: 10rem !important;
     }
+
+    .new-game{
+        bottom: 15rem !important;
+    }
 }
 
 @media all and (max-width: 1215px){
     .allcards-div{
         bottom: 15.5rem !important;
+        left: 1rem !important;
     }  
 
     .top-card{  
@@ -364,6 +387,10 @@ main{
         bottom: 18.5rem !important;
         left: 8rem !important;
     }
+
+    .new-game{
+        bottom: 15rem !important;
+    }
 }
 
 @media all and (max-width: 1035px){
@@ -385,6 +412,16 @@ main{
         bottom: 17.5rem !important;
         left: 6rem !important;
     }
+
+    .new-game{
+        bottom: 12rem !important;
+        left: 5rem;
+    }
+
+    .btn-add{
+        bottom: 10rem !important;
+        right: 5rem !important;
+     }
 }
 
 @media all and (max-width: 985px){
@@ -427,15 +464,52 @@ main{
         bottom: 14.5rem !important;
         left: 6rem !important;
     }
-}
 
-@media all and (max-width: 850px){
-    .allcards-div{
-       left: 2.5rem !important;
+    .new-game{
+        bottom: 10rem !important;
     }
 }
 
+@media all and (max-width: 815px){
+    .allcards-div{
+        bottom: 9rem !important;
+    }  
 
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 30px !important;
+    }
+
+    .beer{
+        bottom: 13.5rem !important;
+        left: 8rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 13.5rem !important;
+        left: 6rem !important;
+    }
+}
+
+@media all and (max-width: 755px){
+    .allcards-div{
+        bottom: 7.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 30px !important;
+    }
+
+    .beer{
+        bottom: 12.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 12.5rem !important;
+        left: 6rem !important;
+    }
+}
 /* HEIGHT SECTION */
 
 

@@ -24,7 +24,7 @@
     }
 
     span{
-        font-size: 15px;
+        font-size: 100%;
         margin-left: 5px;
     }
 }
@@ -32,4 +32,17 @@
 .player-active{
     background: white;
     color: black;
+}
+
+/* MEDIA QUERY */
+
+@media all and (max-width: 950px){
+    .player-div{
+        width: 65% !important;
+    }
+
+    .user-img{
+        width: 20px !important;
+        height: 20px !important;
+    }
 }

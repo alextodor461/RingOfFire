@@ -13,25 +13,26 @@
     <div class="floor-div">
         <img class="floor-img" src="assets/img/cards/game-bg.png" alt="">
     </div>
-
-    <img class="game-desk" src="assets/img/cards/game-desk.svg" alt="">
-    <img *ngIf="game.beerFull" [class.highlightBeer]="game.drinkActive" class="beer" (click)="drink()" src="assets/img/cards/beer-full.svg" alt="">
-    <img *ngIf="game.beerEmpty" [class.highlightBeer]="game.drinkActive" class="beer" src="assets/img/cards/beer-empty.svg" alt="">
-    <img (click)="fillBeer()" [class.highlightBeer]="game.beerMug" class="beer-bottle" src="assets/img/cards/beer-bottle.svg" alt="">
-    <div class="cards-stack">
-        <div class="allcards-div">
-            <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.svg" alt="">
-            <img class="played-card" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
-            <img *ngIf="this.game.pickcard" class="pick-card" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt=""> 
-        </div>                  
-    </div>  
+        <img class="game-desk" src="assets/img/cards/game-desk.svg" alt="">
+        <img *ngIf="game.beerFull" mat-raised-button matTooltip="Drink" [class.highlightBeer]="game.drinkActive" class="beer" (click)="drink()" src="assets/img/cards/beer-full.svg" alt="">
+        <img *ngIf="game.beerEmpty" [class.highlightBeer]="game.drinkActive" class="beer" src="assets/img/cards/beer-empty.svg" alt="">
+        <img (click)="fillBeer()" mat-raised-button matTooltip="fill beer mug" [class.highlightBeer]="game.beerMug" class="beer-bottle" src="assets/img/cards/beer-bottle.svg" alt="">
+        <img mat-raised-button matTooltip="New Game" class="new-game" (click)="newGame()" src="assets/img/cards/new-start.svg" alt="">
+      
+            <div class="cards-stack">
+                <div class="allcards-div">
+                    <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.svg" alt="">
+                    <img class="played-card" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
+                    <img *ngIf="this.game.pickcard" class="pick-card" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt=""> 
+                </div>                  
+            </div> 
 </main>
 
 <app-game-info *ngIf="this.game.playedCard" [rule]="this.game.currentCard" class="info"></app-game-info>
 
-<app-game-over *ngIf="game.gameOver" class="game-over-overlay"></app-game-over>
+<app-game-over (restart)="game" *ngIf="game.gameOver" class="game-over-overlay"></app-game-over>
 
-<img class="btn-add" (click)="openDialog()" src="assets/img/cards/add-user.svg" alt="">
+<img mat-raised-button matTooltip="Add Player" [class.highlight]="highlightAddPlayer" class="btn-add" (click)="openDialog()" src="assets/img/cards/add-user.svg" alt="">
 
 
 
