@@ -22,6 +22,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { DetelePlayerComponent } from './detele-player/detele-player.component';
 import { GameOverComponent } from './game-over/game-over.component';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { ImprintComponent } from './imprint/imprint.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     AlertComponent,
     DetelePlayerComponent,
     GameOverComponent,
+    ImprintComponent,
+    PrivacyComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),

@@ -35,3 +35,21 @@
         }
     }
 }
+
+@media all and (max-width: 650px){
+    .card{
+        height: 30px;
+        margin-bottom: -45px;
+
+        .title{
+            font-size: 15px;
+            margin-top: -10px;
+        }
+
+        .description{
+            font-size: 8px;
+            line-height: 8px;
+            margin-top: -5px !important;
+        }
+    }
+}

@@ -18,7 +18,7 @@
         <img *ngIf="game.beerEmpty" [class.highlightBeer]="game.drinkActive" class="beer" src="assets/img/cards/beer-empty.svg" alt="">
         <img (click)="fillBeer()" mat-raised-button matTooltip="fill beer mug" [class.highlightBeer]="game.beerMug" class="beer-bottle" src="assets/img/cards/beer-bottle.svg" alt="">
         <img mat-raised-button matTooltip="New Game" class="new-game" (click)="newGame()" src="assets/img/cards/new-start.svg" alt="">
-      
+     
             <div class="cards-stack">
                 <div class="allcards-div">
                     <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.svg" alt="">

@@ -104,6 +104,21 @@ main{
     }
 }
 
+@keyframes pick-card-animation2{
+    0%{
+        transform: scale(1) rotateX(0deg) !important;
+    }
+    40%{
+        transform: scale(1.4) rotateX(0deg);
+    }
+    80%{
+        transform: scale(1.4) rotateX(0deg);
+    }
+    100%{
+        transform: scale(1) translateY(0rem) translateX(12.5rem) rotateZ(30deg);
+    }
+}
+
 .player-position{
     display: flex;
     justify-content: center;
@@ -136,9 +151,8 @@ main{
 .info{
     position: absolute;
     bottom: 50px;
-    right: 200px;
-    left: 200px;
-    perspective: 1000px;
+    right: 100px;
+    left: 100px;
 }
 
 .div{
@@ -489,6 +503,11 @@ main{
         bottom: 13.5rem !important;
         left: 6rem !important;
     }
+
+    .btn-add{
+        bottom: 10rem !important;
+        right: 3rem !important;
+    }
 }
 
 @media all and (max-width: 755px){
@@ -508,6 +527,103 @@ main{
     .beer-bottle{
         bottom: 12.5rem !important;
         left: 6rem !important;
+    }
+
+    .played-card{
+        transform: translateY(0rem) translateX(12.5rem) rotateZ(30deg) !important;
+    }
+
+    .pick-card{
+        animation: pick-card-animation2 1.25s ease-in-out !important;
+    }
+}
+
+@media all and (max-width: 690px){
+    .allcards-div{
+        bottom: 6.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 20px !important;
+    }
+
+    .beer{
+        bottom: 11rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 11rem !important;
+        left: 6rem !important;
+    }
+
+    .new-game{
+        bottom: 7.5rem !important;
+    }
+
+    .btn-add{
+        bottom: 7.5rem !important;
+        right: 3rem !important;
+    }
+}
+
+@media all and (max-width: 640px){
+    .allcards-div{
+        bottom: 5.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 20px !important;
+    }
+
+    .beer{
+        bottom: 11rem !important;
+        left: 6.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 11rem !important;
+        left: 4.5rem !important;
+    }
+
+    .new-game{
+        bottom: 7.5rem !important;
+    }
+
+    .btn-add{
+        bottom: 7.5rem !important;
+        right: 3rem !important;
+    }
+}
+
+@media all and (max-width: 600px){
+    .allcards-div{
+        bottom: 4.5rem !important;
+    }  
+
+    .top-card{  
+        width: 14% !important; 
+        padding-bottom: 20px !important;
+    }
+
+    .beer{
+        bottom: 9.5rem !important;
+        left: 6.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 9.5rem !important;
+        left: 4.5rem !important;
+    }
+
+    .new-game{
+        bottom: 6rem !important;
+    }
+
+    .btn-add{
+        bottom: 7.5rem !important;
+        right: 3rem !important;
     }
 }
 /* HEIGHT SECTION */

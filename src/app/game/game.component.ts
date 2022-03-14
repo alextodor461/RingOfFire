@@ -12,7 +12,7 @@ import { DetelePlayerComponent } from '../detele-player/detele-player.component'
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
-  @Input() Img: string = '';
+  
   highlightAddPlayer = false;
   drinkBeer = new Audio();
   audio2 = new Audio();

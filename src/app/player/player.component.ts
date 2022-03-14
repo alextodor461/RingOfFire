@@ -10,7 +10,7 @@ export class PlayerComponent implements OnInit {
   @Input() Name: string = '';
   @Input() Img: string = '';
   @Input() playerActive: boolean = false;
- 
+
   constructor(public dialog: MatDialog) { }
 
 
