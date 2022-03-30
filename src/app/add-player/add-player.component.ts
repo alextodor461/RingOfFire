@@ -16,7 +16,7 @@ export class AddPlayerComponent implements OnInit {
   };
 
   characters = [
-    'assets/img/cards/bandit.jpeg', 
+    'assets/img/cards/bandit.png', 
     'assets/img/cards/branding.jpeg', 
     'assets/img/cards/bull.jpeg', 
     'assets/img/cards/jack.webp', 

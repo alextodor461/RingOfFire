@@ -123,7 +123,7 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 100%;
     margin: 5px 0px;
     z-index: 1;
     color: white;
@@ -198,6 +198,7 @@ main{
     z-index: 20;
     cursor: pointer;
     transition: 175ms ease;
+    z-index: 0;
     
     &:hover{
         filter: drop-shadow(0px 0px 2px rgb(255, 230, 1));
@@ -209,7 +210,7 @@ main{
     bottom: 30rem;
     left: 12.5rem;
     width: 3%;
-    z-index: 20;
+    z-index: 0;
     cursor: pointer;
     transition: 175ms ease;
     
@@ -236,6 +237,98 @@ main{
     }
 }
 
+@media all and (max-width: 2600px){
+    .allcards-div{
+        bottom: 37rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 38.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 38.5rem !important;
+    }
+
+    .new-game{
+        bottom: 25rem !important;
+    }
+
+    .btn-add{
+        bottom: 25rem !important;
+    }
+}
+
+@media all and (max-width: 2400px){
+    .allcards-div{
+        bottom: 35rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 36.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 36.5rem !important;
+    }
+
+    .new-game{
+        bottom: 23rem !important;
+    }
+}
+
+@media all and (max-width: 2200px){
+    .allcards-div{
+        bottom: 33rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 33.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 33.5rem !important;
+    }
+}
+
+@media all and (max-width: 2000px){
+    .allcards-div{
+        bottom: 29rem !important;
+    }  
+
+    .top-card{  
+        width: 15% !important; 
+        padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 31.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 31.5rem !important;
+    }
+
+    .new-game{
+        bottom: 20rem !important;
+    }
+}
+
 @media all and (max-width: 1800px){
     .allcards-div{
         bottom: 26rem !important;
@@ -244,6 +337,14 @@ main{
     .top-card{  
         width: 15% !important; 
         padding-bottom: 65px !important;
+    }
+
+    .beer{
+        bottom: 29.5rem !important;
+    }
+
+    .beer-bottle{
+        bottom: 29.5rem !important;
     }
 }
 
@@ -263,6 +364,10 @@ main{
 
     .beer-bottle{
         bottom: 27.5rem !important;
+    }
+
+    .btn-add{
+        bottom: 17rem !important;
     }
 }
 

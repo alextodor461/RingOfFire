@@ -2,10 +2,34 @@
     height: 100px;
 }
 
+@media all and (max-width: 2600px){
+    .card{
+        height: 95px;
+        
+
+        .description{
+            font-size: 1.5em;
+            padding: 5px 0px;
+        }
+
+        .title{
+            font-size: 2em;
+        }
+    }
+}
+
 @media all and (max-width: 1415px){
     .card{
         height: 65px;
-        font-size: 3px;
+
+        .description{
+            font-size: 1.1em;
+            padding: 5px 0px;
+        }
+
+        .title{
+            font-size: 1.5em;
+        }
     }
 }
 
@@ -15,7 +39,11 @@
         margin-bottom: -25px;
 
         .title{
-            font-size: 20px;
+            margin-bottom: 0px !important;
+        }
+
+        .description{
+            font-size: 0.9em;
         }
     }
 }
