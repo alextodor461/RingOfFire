@@ -21,9 +21,9 @@
      
             <div class="cards-stack">
                 <div class="allcards-div">
-                    <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.svg" alt="">
-                    <img class="played-card" src="assets/img/cards/{{ this.game.playedcard }}.svg" alt="">
-                    <img *ngIf="this.game.pickcard" class="pick-card" src="assets/img/cards/{{ this.game.currentCard }}.svg" alt=""> 
+                    <img *ngFor="let card of this.game.stack; let i = index" (click)="pickCard(i)" [class.anmation]="this.game.pickcard" class="top-card" [ngStyle]="{'transform': 'rotate(' + i * (360/53) +'deg)'}" src="assets/img/cards/card_cover.png" alt="">
+                    <img class="played-card" src="assets/img/cards/{{ this.game.playedcard }}.png" alt="">
+                    <img *ngIf="this.game.pickcard" class="pick-card" src="assets/img/cards/{{ this.game.currentCard }}.png" alt=""> 
                 </div>                  
             </div> 
 </main>
